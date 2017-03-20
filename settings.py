@@ -13,7 +13,7 @@ class Settings():
         self.alien_speed_factor=1
         self.fleet_drop_speed=10
         
-        self.ship_limit=1
+        self.ship_limit=3
         self.speedup_scale=1.1
         self.score_scale=1.5
         self.initialize_dynamic_settings()
