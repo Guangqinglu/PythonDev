@@ -30,8 +30,9 @@ def run_game():
 	aliens = Group()
 	#创建外星人群
 	gf.create_fleet(ai_settings, screen, ship, aliens)
+
 	while True:
-		
+		print("Game start\r\n")
 		gf.check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets)
 		if stats.game_active:
 			ship.update()

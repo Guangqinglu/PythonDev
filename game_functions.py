@@ -84,14 +84,25 @@ def update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets):
 
 def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets):
 	collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+	check_high_score(stats, sb)
 	if collisions:
 		for aliens in collisions.values():
 			stats.score += ai_settings.alien_points * len(aliens)
 			sb.prep_score()
+			print("prep score\r\n")
+		check_high_score(stats, sb)
 	if len(aliens) == 0:
 		# 删除现有的子弹并新建一群外星人
 		bullets.empty()
 		create_fleet(ai_settings, screen, ship, aliens)
+
+def check_high_score(stats, sb):
+	#检查是否诞生新的最高得分
+	sb.prep_high_score()
+	print("High score\r\n")
+	if stats.score > stats.high_score:
+		stats.high_score = stats.score
+		sb.prep_high_score()
 
 def get_number_aliens_x(ai_settings, alien_width):
 	#计算每行可容纳多少个外星人
