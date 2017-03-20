@@ -12,6 +12,8 @@ class Scoreboard():
         self.font = pygame.font.SysFont(None, 48)
         #准备初始得分图像
         self.prep_score()
+        # 准备初始最高得分图像
+        self.prep_high_score()
     def prep_score(self):
         #将得分转换为一幅渲染的图像
         rounded_score = int(round(self.stats.score, -1))
@@ -21,6 +23,7 @@ class Scoreboard():
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
+
     def prep_high_score(self):
         #将最高得分转化为渲染图片
         high_score = int(round(self.stats.high_score, -1))
